@@ -1,0 +1,107 @@
+/* One shared angular perimeter: thin structure plus illuminated segments on its edge. */
+.hud-frame {
+  --frame-cut: 12px;
+  --frame-line: 1px;
+  --frame-segment: 3px;
+  --frame-length: 42px;
+  --frame-edge: rgba(80,207,232,.5);
+  --frame-light: rgba(115,235,218,.9);
+  --frame-active: var(--jags-hud-active, rgba(111,230,172,.94));
+  --frame-speed: var(--jags-motion-standard, 300ms);
+  position:relative;
+  border-color:transparent;
+  box-shadow:none;
+  transition:background-color var(--frame-speed) ease;
+}
+.hud-frame::before,.hud-frame::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:3;
+  pointer-events:none;
+  border:0;
+  box-shadow:none;
+  --frame-stroke:var(--frame-line);
+  clip-path:polygon(evenodd,
+    var(--frame-cut) 0, calc(100% - var(--frame-cut)) 0,
+    100% var(--frame-cut), 100% calc(100% - var(--frame-cut)),
+    calc(100% - var(--frame-cut)) 100%, var(--frame-cut) 100%,
+    0 calc(100% - var(--frame-cut)), 0 var(--frame-cut), var(--frame-cut) 0,
+    calc(var(--frame-cut) + var(--frame-stroke)) var(--frame-stroke),
+    var(--frame-stroke) calc(var(--frame-cut) + var(--frame-stroke)),
+    var(--frame-stroke) calc(100% - var(--frame-cut) - var(--frame-stroke)),
+    calc(var(--frame-cut) + var(--frame-stroke)) calc(100% - var(--frame-stroke)),
+    calc(100% - var(--frame-cut) - var(--frame-stroke)) calc(100% - var(--frame-stroke)),
+    calc(100% - var(--frame-stroke)) calc(100% - var(--frame-cut) - var(--frame-stroke)),
+    calc(100% - var(--frame-stroke)) calc(var(--frame-cut) + var(--frame-stroke)),
+    calc(100% - var(--frame-cut) - var(--frame-stroke)) var(--frame-stroke),
+    calc(var(--frame-cut) + var(--frame-stroke)) var(--frame-stroke));
+  transition:filter var(--frame-speed) ease,background-color var(--frame-speed) ease;
+}
+.hud-frame::before { background:var(--frame-edge); }
+.hud-frame::after {
+  --frame-stroke:var(--frame-segment);
+  background:
+    linear-gradient(var(--frame-light),var(--frame-light)) top left/var(--frame-length) var(--frame-length) no-repeat,
+    linear-gradient(var(--frame-light),var(--frame-light)) top right/var(--frame-length) var(--frame-length) no-repeat,
+    linear-gradient(var(--frame-light),var(--frame-light)) bottom left/var(--frame-length) var(--frame-length) no-repeat,
+    linear-gradient(var(--frame-light),var(--frame-light)) bottom right/var(--frame-length) var(--frame-length) no-repeat;
+  filter:drop-shadow(0 0 2px rgba(80,207,232,.22));
+}
+.hud-frame:is(:hover,:focus-visible,:focus-within) {
+  --frame-edge:rgba(110,229,239,.75);
+  --frame-light:var(--frame-active);
+  border-color:transparent;
+  box-shadow:none;
+}
+.hud-frame:is(:hover,:focus-visible,:focus-within)::after {
+  filter:drop-shadow(0 0 var(--frame-glow-radius,4px) var(--frame-glow-color,rgba(98,223,170,.4)));
+}
+.hud-frame--hero { --frame-cut:16px; --frame-edge:rgba(80,207,232,.4); --frame-segment:3px; --frame-length:48px; }
+.hud-frame--content { --frame-cut:12px; --frame-segment:3px; }
+.hud-frame--badge {
+  --frame-cut:8px;
+  --frame-segment:3px;
+  --frame-length:25px;
+  clip-path:polygon(var(--frame-cut) 0,calc(100% - var(--frame-cut)) 0,100% var(--frame-cut),100% calc(100% - var(--frame-cut)),calc(100% - var(--frame-cut)) 100%,var(--frame-cut) 100%,0 calc(100% - var(--frame-cut)),0 var(--frame-cut));
+}
+/* Research figures preserve their captions and external keyboard focus outline. */
+.hud-frame--research {
+  clip-path:none;
+  border-radius:0;
+  --frame-glow-radius:4px;
+  --frame-glow-color:rgba(98,223,170,.35);
+  background-color:rgba(9,16,19,.45);
+}
+.hud-frame--research:focus-visible {
+  /* The bright angular perimeter is the focus indicator, without a second rectangle. */
+  outline:none;
+}
+.hud-frame--research img { transition:filter var(--frame-speed) ease; }
+.hud-frame--research:is(:hover,:focus-visible,:focus-within) img { filter:brightness(1.04); }
+/* Compact controls keep content unclipped; quieter variants retain the same geometry. */
+.hud-frame--compact { --frame-cut:6px; --frame-length:18px; }
+.hud-frame--quiet { --frame-edge:rgba(80,207,232,.32); --frame-light:rgba(115,235,218,.65); --frame-glow-radius:3px; }
+.hud-frame--static:hover:not(:focus-within):not(:focus-visible) {
+  --frame-edge:rgba(80,207,232,.5);
+  --frame-light:rgba(115,235,218,.9);
+}
+.hud-frame--quiet.hud-frame--static:hover:not(:focus-within):not(:focus-visible) {
+  --frame-edge:rgba(80,207,232,.32);
+  --frame-light:rgba(115,235,218,.65);
+}
+.hud-frame--static:hover:not(:focus-within):not(:focus-visible)::after {
+  filter:drop-shadow(0 0 2px rgba(80,207,232,.22));
+}
+.hud-frame--compact:is(:focus-visible,:focus-within),.hud-frame--quiet:is(:focus-visible,:focus-within) {
+  --frame-edge:rgba(110,229,239,.75);
+  --frame-light:var(--frame-active);
+}
+/* Smaller cuts apply only to newly standardized components; About retains its approved geometry. */
+@media (max-width:600px) {
+  .hud-frame--quiet.hud-frame--content { --frame-cut:8px; --frame-length:26px; }
+  .hud-frame--compact { --frame-cut:5px; --frame-length:14px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .hud-frame,.hud-frame::before,.hud-frame::after,.hud-frame--research img { transition:none; }
+}

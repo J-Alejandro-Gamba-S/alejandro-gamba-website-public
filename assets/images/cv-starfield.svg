@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <!-- Static, irregular decorative field; no scientific relationships implied. -->
+  <g fill="#a5c9cf" opacity=".24">
+    <circle cx="31" cy="54" r=".8"/><circle cx="113" cy="173" r=".6"/>
+    <circle cx="207" cy="35" r="1"/><circle cx="294" cy="119" r=".6"/>
+    <circle cx="399" cy="62" r=".7"/><circle cx="472" cy="212" r=".6"/>
+    <circle cx="541" cy="91" r="1"/><circle cx="683" cy="28" r=".7"/>
+    <circle cx="756" cy="163" r=".6"/><circle cx="831" cy="77" r="1.1"/>
+    <circle cx="957" cy="137" r=".7"/><circle cx="1093" cy="39" r=".9"/>
+    <circle cx="1174" cy="221" r=".7"/><circle cx="61" cy="348" r="1"/>
+    <circle cx="184" cy="279" r=".6"/><circle cx="269" cy="431" r=".8"/>
+    <circle cx="355" cy="316" r=".7"/><circle cx="511" cy="384" r=".6"/>
+    <circle cx="638" cy="286" r=".8"/><circle cx="729" cy="453" r=".6"/>
+    <circle cx="887" cy="327" r=".9"/><circle cx="1014" cy="409" r=".6"/>
+    <circle cx="1131" cy="344" r="1"/><circle cx="27" cy="591" r=".6"/>
+    <circle cx="137" cy="707" r=".9"/><circle cx="224" cy="563" r=".6"/>
+    <circle cx="378" cy="671" r=".8"/><circle cx="449" cy="527" r=".6"/>
+    <circle cx="583" cy="731" r=".7"/><circle cx="651" cy="587" r=".9"/>
+    <circle cx="798" cy="689" r=".6"/><circle cx="916" cy="549" r=".8"/>
+    <circle cx="1043" cy="713" r=".6"/><circle cx="1163" cy="609" r=".8"/>
+  </g>
+  <g fill="none" stroke="#78bcca" stroke-width=".6" opacity=".09">
+    <path d="M683 28 Q770 26 831 77 T957 137 M831 77 Q843 206 887 327"/>
+    <path d="M27 591 Q110 610 224 563 T449 527"/>
+    <path d="M916 549 Q1038 531 1163 609"/>
+  </g>
+</svg>
