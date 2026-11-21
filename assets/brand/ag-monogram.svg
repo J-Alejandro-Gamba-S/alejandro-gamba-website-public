@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>AG - Alejandro Gamba</title>
+  <rect width="64" height="64" fill="#090c0b"/>
+  <path d="M4 20V12L12 4H20M44 60H52L60 52V44" fill="none" stroke="#50cfe8" stroke-width="2"/>
+  <path d="m10 47 11-30h2l11 30M15 35h14M54 20l-5-3h-8l-5 7v16l5 7h13V34h-8" fill="none" stroke="#eceeeb" stroke-width="4" transform="translate(0.2 0.2) scale(0.9)" stroke-linejoin="miter"/>
+</svg>

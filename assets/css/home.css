@@ -1,4 +1,4 @@
-/* Home v0.2. Loaded only by index.qmd; shared pages retain styles.css. */
+/* Home v0.2. Loaded only by interactive.qmd; shared pages retain styles.css. */
 body:has(.home-immersive) {
   --home-blue: #79b8ff;
   --home-cyan: #57a6c9;

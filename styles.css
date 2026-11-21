@@ -1,5 +1,5 @@
 /* =========================================================
-   JAGS Academic Website
+   Alejandro Gamba Academic Website
    Global Design System — Home v0.1
    ========================================================= */
 
@@ -3703,4 +3703,74 @@ body:has(.cv-shell) #title-block-header { display: none; }
 @media (max-width:360px) {
   .cv-glance.hud-frame li:nth-child(odd) { border-right:0; }
   .cv-glance.hud-frame li:not(:last-child) { border-bottom:1px solid var(--jags-line-strong); }
+}
+
+/* Phase 2 identity: retain the existing HUD palette and internal token names. */
+.navbar-brand-container { display: flex; align-items: center; gap: .55rem; }
+.navbar .navbar-brand { margin-right: 0; flex-shrink: 0; }
+.navbar .navbar-logo { width: 2.25rem; height: 2.25rem; max-height: none; }
+.navbar .navbar-title {
+  color: var(--jags-text);
+  font-family: var(--jags-font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+  white-space: nowrap;
+}
+.navbar-brand:is(:hover, :focus-visible) .navbar-title { color: var(--jags-cyan); }
+@media (max-width: 575px) {
+  .navbar-brand-container { gap: .35rem; }
+  .navbar .navbar-logo { width: 2rem; height: 2rem; }
+  .navbar .navbar-title { font-size: .95rem; }
+}
+
+/* Shared identity description is SEO metadata on section pages, not a new subtitle.
+   Research project pages keep their existing question/description presentation. */
+body:not(:has(.research-project-page)) #title-block-header .description { display: none; }
+
+/* No search/tools occupy Quarto's extra mobile brand reservation in this site. */
+@media (max-width: 991.98px) {
+  .navbar .navbar-brand-container { max-width: calc(100% - 3.5rem); }
+}
+
+/* Shared pathway switch: native Quarto/Bootstrap navigation, existing HUD palette. */
+.navbar .dropdown-menu {
+  background-color: var(--jags-bg-soft);
+  border: 1px solid var(--jags-line-strong);
+  border-radius: 0;
+  padding: .35rem;
+}
+.navbar .dropdown-item {
+  color: var(--jags-text);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font: .85rem var(--jags-font-mono);
+}
+.navbar .dropdown-item:is(:hover,:focus-visible) {
+  background-color: rgba(103,185,122,.12);
+  color: var(--jags-text);
+}
+.navbar .dropdown-item:focus-visible { outline: 2px solid var(--jags-focus); outline-offset: -2px; }
+
+.audience-path-links { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1.5rem; padding: 1rem var(--jags-page-gutter); border-top: 1px solid var(--jags-line); }
+.audience-path-links a { display: inline-flex; align-items: center; min-height: 44px; color: #a9d9e8; text-underline-offset: 5px; }
+.audience-path-links a:focus-visible { outline: 2px solid var(--jags-focus); outline-offset: 3px; }
+
+/* Original Interactive site header only. Approved chooser/Academic View are excluded. */
+body:not(:has(.audience-landing, .academic-view)) .navbar-collapse > .navbar-nav.ms-auto {
+  display: none;
+}
+@media (min-width: 992px) {
+  body:not(:has(.audience-landing, .academic-view)) .navbar { position: relative; }
+  body:not(:has(.audience-landing, .academic-view)) .navbar-container,
+  body:not(:has(.audience-landing, .academic-view)) .navbar-collapse { position: static; }
+  body:not(:has(.audience-landing, .academic-view)) .navbar-collapse > .navbar-nav.me-auto {
+    position: absolute;
+    left: 50vw;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: max-content;
+    margin: 0 !important;
+  }
 }
